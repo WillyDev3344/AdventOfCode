@@ -1,5 +1,4 @@
 ﻿using AdventOfCode.Utils;
-using System.Dynamic;
 using System.Text.RegularExpressions;
 
 namespace AdventOfCode._2023.Day2
@@ -39,7 +38,37 @@ namespace AdventOfCode._2023.Day2
 
         protected override string ExecutePart2(List<string> inputContent)
         {
-            throw new NotImplementedException();
+            string pullsPattern = @"(\d+)\s+(\w+)";
+            int sum = 0;
+
+            foreach (string line in inputContent)
+            {
+                MatchCollection pulls = Regex.Matches(line, pullsPattern);
+                int power = 0, biggestRed = 0, biggestGreen = 0, biggestBlue = 0;
+
+                for (int i = 0; i < pulls.Count; i++)
+                {
+                    int cubeAmount = int.Parse(pulls[i].Groups[1].Value);
+                    string color = pulls[i].Groups[2].Value;
+
+                    switch (color)
+                    {
+                        case "red":
+                            if (cubeAmount > biggestRed) biggestRed = cubeAmount; 
+                            break;
+                        case "green":
+                            if (cubeAmount > biggestGreen) biggestGreen = cubeAmount;
+                            break;
+                        case "blue":
+                            if(cubeAmount > biggestBlue) biggestBlue = cubeAmount;
+                            break;
+                        default: break;
+                    }
+                }
+                power = biggestRed * biggestGreen * biggestBlue;
+                sum += power;
+            }
+            return sum.ToString();
         }
     }
 }
