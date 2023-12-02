@@ -30,6 +30,5 @@ namespace AdventOfCode.Utils
 
         protected abstract string ExecutePart1(List<string> inputContent);
         protected abstract string ExecutePart2(List<string> inputContent);
-
     }
 }
