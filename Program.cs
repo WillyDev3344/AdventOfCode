@@ -1,4 +1,4 @@
-﻿using AdventOfCode._2023.Day1;
+﻿using AdventOfCode._2023.Day2;
 
-Day1 day1 = new Day1();
-day1.Solve();
+Day2 day2 = new Day2();
+day2.Solve();
