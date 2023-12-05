@@ -63,7 +63,7 @@ namespace AdventOfCode._2023.Day3
 
         protected override string ExecutePart2(List<string> inputContent)
         {
-            throw new NotImplementedException();
+            return "Not Solved !";
         }
     }
 }
