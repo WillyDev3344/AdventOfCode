@@ -4,6 +4,8 @@ namespace AdventOfCode.Utils
 {
     abstract class Solution
     {
+        const string UNSOLVED_MSG = "Not implemented yet !";
+
         public void Solve()
         {
             string pattern = @"\._(\d{4})\.(\w+)";
@@ -21,11 +23,26 @@ namespace AdventOfCode.Utils
 
             Console.WriteLine($"*** Solutions for {day} of {year} ***");
 
-            string part1 = ExecutePart1(content);
-            Console.WriteLine($"Part 1 answer : {part1}");
-            
-            string part2 = ExecutePart2(content);
-            Console.WriteLine($"Part 2 answer : {part2}");
+            string solveMsg;
+            try
+            {
+                solveMsg = ExecutePart1(content);
+            }
+            catch (NotImplementedException)
+            {
+                solveMsg = UNSOLVED_MSG;
+            }
+            Console.WriteLine($"Part 1 answer : {solveMsg}");
+
+            try
+            {
+                solveMsg = ExecutePart2(content);
+            }
+            catch (NotImplementedException)
+            {
+                solveMsg = UNSOLVED_MSG;
+            }
+            Console.WriteLine($"Part 2 answer : {solveMsg}");
         }
 
         protected abstract string ExecutePart1(List<string> inputContent);
